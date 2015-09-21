@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="js/vue.js"></script>
+
+    <style>
+        body {
+            font-family: Helvetica Neue, Arial, sans-serif;
+        }
+        li.done {
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+    <div id="vue">
+        <h1>{{title | uppercase}}</h1>
+        <ul>
+            <li 
+                v-repeat="todos"
+                v-on="click: done = !done"
+                class="{{done ? 'done' : ''}}" 
+            >
+                {{content}}
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        var vue = new Vue({
+            el: '#vue',
+            data: {
+                title: 'todos',
+                todos: [
+                    {
+                        done: true,
+                        content: 'Learn JavaScript'
+                    },
+                    {
+                        done: false,
+                        content: 'Learn vue.js'
+                    }
+                ]
+            }
+        })
+    </script>
+</body>
+</html>
