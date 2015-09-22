@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="vue">
+        <h1>{{title | uppercase}}</h1>
+        <ul>
+            <li 
+                v-repeat="items"
+                class="item-{{$index}}" 
+            >
+                {{$index}} - {{parentMsg}} {{childMsg}}
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        var vue = new Vue({
+            el: '#vue',
+            data: {
+                title: 'title',
+                parentMsg: 'Hello',
+                items: [
+                    { childMsg: 'Foo' },
+                    { childMsg: 'Bar' },
+                    { childMsg: 'Yue' }
+                ]
+            }      
+        })
+    </script>
+</body>
+</html>
