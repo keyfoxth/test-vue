@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="vue">
+        <h1>{{title | uppercase}}</h1>
+        <ul>
+            <li v-on="click: onClick">function</li>
+            <li v-on="click: n++">expression: n = {{n}}</li>
+        </ul>
+    </div>
+
+    <script>
+        var vue = new Vue({
+            el: '#vue',
+            data: {
+                title: 'title',
+                n: 0
+            },
+            methods: {
+                onClick: function(e){
+                    console.log(e.target.tagName);
+                    console.log(e.targetVM === this);
+                }
+            }  
+        })
+    </script>
+</body>
+</html>

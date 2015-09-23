@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="vue">
+        <h1>{{title | uppercase}}</h1>
+        <ul>
+            <li v-repeat="tags">
+                {{$value}}
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        var vue = new Vue({
+            el: '#vue',
+            data: {
+                title: 'title',
+                tags: [ 'JavaScript', 'MVVM', 'vue.js' ]
+            }      
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="vue">
+        <template v-repeat="items">
+            <h2>{{$index+1}}</h2>
+            <ul>
+                <li>
+                   {{parentMsg}}: {{childMsg}}
+                </li>
+            </ul>
+        </template>
+    </div>
+
+    <script>
+        var vue = new Vue({
+            el: '#vue',
+            data: {            
+                items: [
+                    { parentMsg: 'Hello', childMsg: 'Foo' },
+                    { parentMsg: 'Yes', childMsg: 'Bar' },
+                    { parentMsg: 'No', childMsg: 'Yue' }
+                ]
+            }      
+        })
+    </script>
+</body>
+</html>

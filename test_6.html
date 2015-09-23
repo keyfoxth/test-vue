@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="repeat-object">
+        <li v-repeat="primitiveValues">{{$key}}: {{$value}}</li>
+        <li>================</li>
+        <li v-repeat="objectValues">{{$key}}: {{msg}}</li>
+    </div>
+
+    <script>
+        var vue = new Vue({
+            el: '#repeat-object',
+            data: {
+                primitiveValues: {
+                    FirstName: 'Key',
+                    LastName: 'Foxth',
+                    Age: 20
+                },
+                objectValues: {
+                    one: {
+                        msg: 'Yes'
+                    },
+                    two: {
+                        msg: 'No'
+                    }
+                }
+            }      
+        })
+    </script>
+</body>
+</html>
