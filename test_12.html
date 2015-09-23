@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <form id="vue">
+        <p>
+            {{msg}}
+            <br>
+            <input type="text" v-model="msg" debounce="500">
+        </p>
+
+        <p><pre>data: {{$data | json 2}}</pre></p>
+    </form>
+
+    <script>
+        var vue = new Vue({
+            el: '#vue',
+            data: {
+                msg: 'Hi! Debounce.'
+            }      
+        })
+    </script>
+</body>
+</html>

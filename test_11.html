@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <form id="vue">
+        <p>
+            <select v-model="selected" options="options"></select>
+            {{selected}}
+        </p>
+
+        <p><pre>data: {{$data | json 2}}</pre></p>
+    </form>
+
+    <script>
+        var vue = new Vue({
+            el: '#vue',
+            data: {
+                selected: 'two',
+                options: [
+                    { label: 'A', options: [
+                        { text: 'a', value: 'one' },
+                        { text: 'b', value: 'two' }
+                    ] },
+                    { label: 'B', options: [
+                        { text: 'c', value: 'three' },
+                        { text: 'd', value: 'four' }
+                    ] }
+                ]
+            }      
+        })
+    </script>
+</body>
+</html>
