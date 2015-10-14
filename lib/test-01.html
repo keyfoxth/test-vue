@@ -2,7 +2,7 @@
 <html>
 <head>
     <title></title>
-    <script src="js/vue.js"></script>
+    <script src="../node_modules/vue/dist/vue.min.js" charset="utf-8"></script>
 
     <style>
         body {
@@ -17,15 +17,16 @@
     <div id="vue">
         <h1>{{title | uppercase}}</h1>
         <ul>
-            <li 
+            <li
                 v-repeat="todos"
                 v-on="click: done = !done"
-                class="{{done ? 'done' : ''}}" 
+                class="{{done ? 'done' : ''}}"
             >
                 {{content}}
             </li>
         </ul>
     </div>
+    <a href="test-02.html">Next</a>
 
     <script>
         var vue = new Vue({

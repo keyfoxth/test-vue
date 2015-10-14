@@ -2,7 +2,7 @@
 <html>
 <head>
     <title></title>
-    <script src="js/vue.js"></script>
+    <script src="../node_modules/vue/dist/vue.min.js" charset="utf-8"></script>
 </head>
 <body>
     <form id="vue">
@@ -41,6 +41,7 @@
 
         <p><pre>data: {{$data | json 2}}</pre></p>
     </form>
+    <a href="test-10.html">Next</a>
 
     <script>
         var vue = new Vue({
@@ -51,7 +52,7 @@
                 picked: 'one',
                 selected: 'two',
                 multiSelect: ['one', 'three']
-            }      
+            }
         })
     </script>
 </body>
