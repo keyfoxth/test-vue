@@ -1,34 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
-    <script src="../node_modules/vue/dist/vue.min.js" charset="utf-8"></script>
+  <title></title>
+  <script src="../node_modules/vue/dist/vue.min.js" charset="utf-8"></script>
 </head>
 <body>
-    <div id="vue">
-        First name: <input type="text" v-model="firstName">
-        <br>
-        Last name : <input type="text" v-model="lastName">
-        <br>
-        Full name : {{fullName}}
+  <div id="vue">
+    First name: <input type="text" v-model="firstName">
+    <br>
+    Last name : <input type="text" v-model="lastName">
+    <br>
+    Full name : {{fullName}}
 
-        <p><pre>data: {{$data | json 2}}</pre></p>
-    </div>
-    <a href="test-15.html">Next</a>
+    <p><pre>data: {{$data | json 2}}</pre></p>
+  </div>
+  <a href="test-15.html">Next</a>
 
-    <script>
-        var vue = new Vue({
-            el: '#vue',
-            data: {
-                firstName: 'Key',
-                lastName: 'Foxth'
-            },
-            computed: {
-                fullName: function(){
-                    return this.firstName + ' ' + this.lastName;
-                }
-            }
-        })
-    </script>
+  <script>
+    var vue = new Vue({
+      el: '#vue',
+      data: {
+        firstName: 'Key',
+        lastName: 'Foxth'
+      },
+      computed: {
+        fullName: function(){
+          return this.firstName + ' ' + this.lastName;
+        }
+      }
+    })
+  </script>
 </body>
 </html>
