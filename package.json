@@ -4,7 +4,7 @@
   "description": "0.0.0",
   "main": "test-01.html",
   "dependencies": {
-    "vue": "^0.12.16"
+    "vue": "latest"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
