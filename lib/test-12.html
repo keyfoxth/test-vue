@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
-    <script src="../node_modules/vue/dist/vue.min.js" charset="utf-8"></script>
+  <title></title>
+  <script src="../node_modules/vue/dist/vue.min.js" charset="utf-8"></script>
 </head>
 <body>
-    <form id="vue">
-        <p>
-            {{msg}}
-            <br>
-            <input type="text" v-model="msg" debounce="500">
-        </p>
+  <form id="vue">
+    <p>
+      {{msg}}
+      <br>
+      <input type="text" v-model="msg" debounce="500">
+    </p>
 
-        <p><pre>data: {{$data | json 2}}</pre></p>
-    </form>
-    <a href="test-13.html">Next</a>
+    <p><pre>data: {{$data | json 2}}</pre></p>
+  </form>
+  <a href="test-13.html">Next</a>
 
-    <script>
-        var vue = new Vue({
-            el: '#vue',
-            data: {
-                msg: 'Hi! Debounce.'
-            }
-        })
-    </script>
+  <script>
+    var vue = new Vue({
+      el: '#vue',
+      data: {
+        msg: 'Hi! Debounce.'
+      }
+    })
+  </script>
 </body>
 </html>

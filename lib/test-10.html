@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
-    <script src="../node_modules/vue/dist/vue.min.js" charset="utf-8"></script>
+  <title></title>
+  <script src="../node_modules/vue/dist/vue.min.js" charset="utf-8"></script>
 </head>
 <body>
-    <form id="vue">
-        <p>
-            <select v-model="selected" options="options"></select>
-            {{selected}}
-        </p>
+  <form id="vue">
+    <p>
+      <select v-model="selected" options="options"></select>
+      {{selected}}
+    </p>
 
-        <p><pre>data: {{$data | json 2}}</pre></p>
-    </form>
-    <a href="test-11.html">Next</a>
+    <p><pre>data: {{$data | json 2}}</pre></p>
+  </form>
+  <a href="test-11.html">Next</a>
 
-    <script>
-        var vue = new Vue({
-            el: '#vue',
-            data: {
-                selected: 'one',
-                options: [
-                    { text: 'a', value: 'one' },
-                    { text: 'b', value: 'two' }
-                ]
-            }
-        })
-    </script>
+  <script>
+    var vue = new Vue({
+      el: '#vue',
+      data: {
+        selected: 'one',
+        options: [
+          { text: 'a', value: 'one' },
+          { text: 'b', value: 'two' }
+        ]
+      }
+    })
+  </script>
 </body>
 </html>

@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
-    <script src="../node_modules/vue/dist/vue.min.js" charset="utf-8"></script>
+  <title></title>
+  <script src="../node_modules/vue/dist/vue.min.js" charset="utf-8"></script>
 </head>
 <body>
-    <div id="vue">
-        <h1>{{title | uppercase}}</h1>
-        <ul>
-            <li v-on="click: onClick">function</li>
-            <li v-on="click: n++">expression: n = {{n}}</li>
-        </ul>
-    </div>
-    <a href="test-08.html">Next</a>
+  <div id="vue">
+    <h1>{{title | uppercase}}</h1>
+    <ul>
+      <li v-on="click: onClick">function</li>
+      <li v-on="click: n++">expression: n = {{n}}</li>
+    </ul>
+  </div>
+  <a href="test-08.html">Next</a>
 
-    <script>
-        var vue = new Vue({
-            el: '#vue',
-            data: {
-                title: 'title',
-                n: 0
-            },
-            methods: {
-                onClick: function(e){
-                    console.log(e.target.tagName);
-                    console.log(e.targetVM === this);
-                }
-            }
-        })
-    </script>
+  <script>
+    var vue = new Vue({
+      el: '#vue',
+      data: {
+        title: 'title',
+        n: 0
+      },
+      methods: {
+        onClick: function(e){
+          console.log(e.target.tagName);
+          console.log(e.targetVM === this);
+        }
+      }
+    })
+  </script>
 </body>
 </html>

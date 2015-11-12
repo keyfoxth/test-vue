@@ -1,39 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
-    <script src="../node_modules/vue/dist/vue.min.js" charset="utf-8"></script>
+  <title></title>
+  <script src="../node_modules/vue/dist/vue.min.js" charset="utf-8"></script>
 </head>
 <body>
-    <div id="vue">
-        <h1>{{title | uppercase}}</h1>
-        <ul>
-            <li v-repeat="user in users">
-                Det: {{user.name}}({{user.email}})
-            </li>
-        </ul>
-    </div>
-    <button id="btn-set">remove</button>
-    <button id="btn-remove">remove</button>
-    <a href="test-06.html">Next</a>
+  <div id="vue">
+    <h1>{{title | uppercase}}</h1>
+    <ul>
+      <li v-repeat="user in users">
+        Det: {{user.name}}({{user.email}})
+      </li>
+    </ul>
+  </div>
+  <button id="btn-set">remove</button>
+  <button id="btn-remove">remove</button>
+  <a href="test-06.html">Next</a>
 
-    <script>
-        var vue = new Vue({
-            el: '#vue',
-            data: {
-                title: 'title',
-                users: [
-                    { name: 'Foo bar', email: 'foo@bar.com' },
-                    { name: 'John Doh', email: 'john@doh.com' }
-                ]
-            }
-        });
-        document.getElementById("btn-set").onclick = function(){
-            vue.users.$set(2, { name: 'Key Fox', email: 'key@fox.com' });
-        };
-        document.getElementById("btn-remove").onclick = function(){
-            vue.users.$remove(0);
-        };
-    </script>
+  <script>
+    var vue = new Vue({
+      el: '#vue',
+      data: {
+        title: 'title',
+        users: [
+          { name: 'Foo bar', email: 'foo@bar.com' },
+          { name: 'John Doh', email: 'john@doh.com' }
+        ]
+      }
+    });
+    document.getElementById("btn-set").onclick = function(){
+      vue.users.$set(2, { name: 'Key Fox', email: 'key@fox.com' });
+    };
+    document.getElementById("btn-remove").onclick = function(){
+      vue.users.$remove(0);
+    };
+  </script>
 </body>
 </html>
