@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+  <div id="vue-1">
+    Hello {{ name }}!
+  </div>
+  <hr>
+  <div id="vue-2">
+    <p v-if="greeting">Hello!</p>
+  </div>
+  <hr>
+  <a href="test-03.html">Next</a>
+
+  <script src="../../node_modules/vue/dist/vue.js"></script>
+  <script>
+    var vueData = {
+      name: 'Vue.js'
+    }
+
+    new Vue({
+      el: '#vue-1',
+      data: vueData
+    })
+
+    new Vue({
+      el: '#vue-2',
+      data: {
+        greeting: true
+      }
+    })
+  </script>
+</body>
+</html>

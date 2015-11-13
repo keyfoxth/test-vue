@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+  <div id="vue-1">
+    <p>a = {{ a }}, b = a + 1 = {{ b }}</p>
+    <input v-model="a">
+  </div>
+  <hr>
+  <div id="vue-2">
+    <p>fullName: {{ fullName }}</p>
+    <p>firstName: <input v-model="firstName"></p>
+    <p>lastName: <input v-model="lastName"></p>
+  </div>
+  <hr>
+  <div id="vue-3">
+    <p>fullName: {{ fullName }}</p>
+    <p>firstName: <input v-model="firstName"></p>
+    <p>lastName: <input v-model="lastName"></p>
+  </div>
+  <hr>
+  <a href="test-06.html">Next</a>
+
+  <script src="../../node_modules/vue/dist/vue.js"></script>
+  <script>
+    var vm = new Vue({
+      el: '#vue-1',
+      data: {
+        a: 1
+      },
+      computed: {
+        b: function(){
+          return this.a + 1
+        }
+      }
+    });
+
+    new Vue({
+      el: '#vue-2',
+      data: {
+        firstName: 'Foo',
+        lastName: 'Bar'
+      },
+      computed: {
+        fullName: function(){
+          return this.firstName + ' ' + this.lastName
+        }
+      }
+    })
+
+    var fn = new Vue({
+      el: '#vue-3',
+      data: {
+        firstName: 'Foo',
+        lastName: 'Bar'
+      },
+      computed: {
+        fullName: {
+          get: function(){
+            return this.firstName + ' ' + this.lastName
+          },
+          set: function(newVales){
+            var names = newVales.split(' ')
+            this.firstName = names[0]
+            this.lastName = names[names.length - 1]
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>

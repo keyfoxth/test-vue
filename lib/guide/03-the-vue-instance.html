@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+  <div id="vue">F12</div>
+  <hr>
+  <a href="test-04.html">Next</a>
+
+  <script src="../../node_modules/vue/dist/vue.js"></script>
+  <script>
+    console.log('id="vue"')
+
+    var data = {
+      a: 1
+    }
+
+    var vm = new Vue({
+      el: '#vue',
+      data: data,
+      created: function(){
+        console.log('a is: ' + this.a)
+      }
+    })
+
+    if (vm.$el === document.getElementById('vue')) {
+      console.log('"vm.$el" === "document.getElementById("vue")"')
+    }
+
+    if (vm.$data === data) {
+      console.log('"vm.$data" === "data"')
+    }
+
+    if (vm.a === data.a) {
+      console.log('"vm.a" === "data.a"')
+    }
+  </script>
+</body>
+</html>

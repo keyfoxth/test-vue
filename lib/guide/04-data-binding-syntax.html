@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+  <div id="vue-1">
+    <p>Message: {{ msg }}</p>
+    <p>This will never change: {{* msg }}</p>
+    <p>The contents are inserted as plain HTML: {{{ msg }}}</p>
+    <input v-model="msg">
+  </div>
+  <hr>
+  <div id="vue-2">
+    <p>{{ msg.split('').reverse().join('') }}</p>
+    <input v-model="msg">
+  </div>
+  <hr>
+  <div id="vue-3">
+    <p>{{ msg | capitalize }}</p>
+    <input v-model="msg">
+  </div>
+  <hr>
+  <div id="vue-4">
+    <p v-if="greeting">Hello!(vm.greeting = true)</p>
+  </div>
+  <hr>
+  <div id="vue-5">
+    <button v-on:click="alert">Alert</button>
+  </div>
+  <hr>
+
+  <a href="test-05.html">Next</a>
+
+  <script src="../../node_modules/vue/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: '#vue-1',
+      data: {
+        msg: '<span>Hello!</span>'
+      }
+    })
+
+    new Vue({
+      el: '#vue-2',
+      data: {
+        msg: 'Binding expressions.'
+      }
+    })
+
+    new Vue({
+      el: '#vue-3',
+      data: {
+        msg: 'filters'
+      }
+    })
+
+    var vm = new Vue({
+      el: '#vue-4',
+      data: {
+        greeting: true
+      }
+    })
+
+    new Vue({
+      el: '#vue-5',
+      methods: {
+        alert: function(){
+          alert("Hello, world!")
+        }
+      }
+    })
+  </script>
+</body>
+</html>
