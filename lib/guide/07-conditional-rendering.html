@@ -5,29 +5,47 @@
   <title></title>
 </head>
 <body>
-  <div id="vue">
-    <h1>{{title | uppercase}}</h1>
-    <ul>
-      <li v-on="click: onClick">function</li>
-      <li v-on="click: n++">expression: n = {{n}}</li>
-    </ul>
+  <div id="vue-1">
+    <template v-if="ok">
+      <h1>Title</h1>
+      <p>Paragraph 1</p>
+      <p>Paragraph 2</p>
+    </template>
   </div>
+  <hr>
+  <div id="vue-2" v-show="ok">
+    <p>Hello!</p>
+  </div>
+  <hr>
+  <div id="vue-3">
+    <div v-if="Math.random() > 0.5">
+      <p>num > 0.5</p>
+    </div>
+    <div v-else>
+      <p>num <= 0.5</p>
+    </div>
+  </div>
+  <hr>
   <a href="test-08.html">Next</a>
 
   <script src="../../node_modules/vue/dist/vue.js"></script>
   <script>
-    var vue = new Vue({
-      el: '#vue',
-      data: {
-        title: 'title',
-        n: 0
-      },
-      methods: {
-        onClick: function(e){
-          console.log(e.target.tagName);
-          console.log(e.targetVM === this);
-        }
+    new Vue({
+      el: '#vue-1',
+    　data: {
+        ok: true
       }
+    })
+
+    new Vue({
+      el: '#vue-2',
+      data: {
+        ok: true
+      }
+    })
+
+    new Vue({
+      el: '#vue-3'
     })
   </script>
 </body>
