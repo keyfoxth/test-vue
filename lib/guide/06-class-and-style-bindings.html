@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+  <div id="vue-1">
+    F12
+    <div class="static" v-bind:class="{ 'class-a': isA, 'class-b': isB }"></div>
+  </div>
+  <hr>
+  <div id="vue-2">
+    F12
+    <div class="static" v-bind:class="classObject"></div>
+  </div>
+  <hr>
+  <div id="vue-3">
+    F12
+    <div v-bind:class="[classA, classB]"></div>
+  </div>
+  <hr>
+  <div id="vue-4">
+    F12
+    <div v-bind:class="[classA, isB ? classB : '']"></div>
+  </div>
+  <hr>
+  <div id="vue-5">
+    F12
+    <div v-bind:style="styleObject"></div>
+  </div>
+  <hr>
+  <a href="test-07.html">Next</a>
+
+  <script src="../../node_modules/vue/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: '#vue-1',
+      data: {
+        isA: true,
+        isB: false
+      }
+    })
+
+    new Vue({
+      el: '#vue-2',
+      data: {
+        classObject: {
+          'class-a': false,
+          'class-b': true
+        }
+      }
+    })
+
+    new Vue({
+      el: '#vue-3',
+      data: {
+        classA: 'class-a',
+        classB: 'class-b'
+      }
+    })
+
+    new Vue({
+      el: '#vue-4',
+      data: {
+        classA: 'class-a',
+        isB: true,
+        classB: 'class-b'
+      }
+    })
+
+    new Vue({
+      el: '#vue-5',
+      data: {
+        styleObject: {
+          color: 'red',
+          fontSize: '13px'
+        }
+      }
+    })
+  </script>
+</body>
+</html>
