@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+  <div id="vue-1">
+    <button v-on:click="greet">greet</button>
+  </div>
+  <hr>
+  <div id="vue-2">
+    <button v-on:click="say('Hi')">Say Hi</button>
+    <button v-on:click="say('What')">Say What</button>
+  </div>
+  <hr>
+  <div id="vue-3">
+    <button v-on:click="say('hello!', $event)">Submit</button>
+  </div>
+  <hr>
+  <div id="vue-4">
+    <input id="input" v-on:keyup.enter="submit">
+  </div>
+  <hr>
+  <a href="test-10.html">Next</a>
+
+  <script src="../../node_modules/vue/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: '#vue-1',
+      data: {
+        name: 'Vue.js'
+      },
+      methods: {
+        greet: function(event){
+          alert('Hello ' + this.name + '!')
+          alert(event.target.tagName)
+        }
+      }
+    })
+
+    new Vue({
+      el: '#vue-2',
+      methods: {
+        say: function(msg){
+          alert(msg)
+        }
+      }
+    })
+
+    new Vue({
+      el: '#vue-3',
+      methods: {
+        say: function(msg, event){
+          event.preventDefault()
+        }
+      }
+    })
+
+    new Vue({
+      el: '#vue-4',
+      methods: {
+        submit: function(){
+          alert('Hello ' + document.getElementById('input').value)
+        }
+      }
+    })
+  </script>
+</body>
+</html>
