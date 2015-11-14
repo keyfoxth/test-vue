@@ -5,34 +5,93 @@
   <title></title>
 </head>
 <body>
-  <div id="vue">
-    <h1>{{title | uppercase}}</h1>
+  <div id="vue-1">
     <ul>
-      <li v-repeat="item in items" v-on="click: toggle(item)">
-        {{item.text}}: {{item.done}}
+      <li v-for="item in items">{{ item.message }}</li>
+    </ul>
+  </div>
+  <hr>
+  <div id="vue-2">
+    <ul>
+      <li v-for="item in items">{{ parentMessage }} {{ $index }} {{ item.message }}</li>
+    </ul>
+  </div>
+  <hr>
+  <div id="vue-3">
+    <ul>
+      <li v-for="(index, item) in items">{{ index }} {{ item.message }}</li>
+    </ul>
+  </div>
+  <hr>
+  <div id="vue-4">
+    <ul>
+      <template v-for="item in items">
+        <li>{{ item.message }}</li>
+        <li>No changer</li>
+      </template>
+    </ul>
+  </div>
+  <hr>
+  <div id="repeat-object">
+    <ul>
+      <li v-for="value in object">
+        {{ $key }} : {{ value }}
       </li>
     </ul>
-    <button v-on="click: submit('hello!', $event)">Submit</button>
   </div>
+  <hr>
   <a href="test-09.html">Next</a>
 
   <script src="../../node_modules/vue/dist/vue.js"></script>
   <script>
-    var vue = new Vue({
-      el: '#vue',
+    new Vue({
+      el: '#vue-1',
       data: {
-        title: 'title',
         items: [
-          { text: 'one', done: true },
-          { text: 'two', done: false }
+          { message: 'Foo' },
+          { message: 'Bar' }
         ]
-      },
-      methods: {
-        toggle: function(item){
-          item.done = !item.done;
-        },
-        submit: function(msg, e){
-          e.stopPropagation();
+      }
+    })
+
+    new Vue({
+      el: '#vue-2',
+      data: {
+        parentMessage: 'Parent',
+        items: [
+          { message: 'Foo' },
+          { message: 'Bar' }
+        ]
+      }
+    })
+
+    new Vue({
+      el: '#vue-3',
+      data: {
+        items: [
+          { message: 'Foo' },
+          { message: 'Bar' }
+        ]
+      }
+    })
+
+    new Vue({
+      el: '#vue-4',
+      data: {
+        items: [
+          { message: 'Foo' },
+          { message: 'Bar' }
+        ]
+      }
+    })
+
+    new Vue({
+      el: '#repeat-object',
+      data: {
+        object: {
+          FirstName: 'Foo',
+          LastName: 'Bar',
+          Age: 30
         }
       }
     })
