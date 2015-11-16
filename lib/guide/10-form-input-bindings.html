@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+  <div id="vue-1">
+    <span>Message is: {{ message }}</span>
+    <br>
+    <input type="text" v-model="message" placeholder="edit me">
+  </div>
+  <hr>
+  <div id="vue-2">
+    <input type="checkbox" id="checkbox" v-model="checked">
+    <label for="checkbox">{{ checked }}</label>
+  </div>
+  <hr>
+  <div id="vue-3">
+    <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+    <label for="jack">Jack</label>
+    <input type="checkbox" id="john" value="John" v-model="checkedNames">
+    <label for="john">John</label>
+    <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+    <label for="mike">Mike</label>
+    <br>
+    <span>Checked names: {{ checkedNames | json }}</span>
+  </div>
+  <hr>
+  <div id="vue-4">
+    <input type="radio" id="one" value="One" v-model="picked">
+    <label for="one">One</label>
+    <br>
+    <input type="radio" id="two" value="Two" v-model="picked">
+    <label for="two">Two</label>
+    <br>
+    <span>Picked: {{ picked }}</span>
+  </div>
+  <hr>
+  <div id="vue-5">
+    <select v-model="selected">
+      <option selected>A</option>
+      <option>B</option>
+      <option>C</option>
+    </select>
+    <span>Selected: {{ selected }}</span>
+  </div>
+  <hr>
+  <div id="vue-6">
+    <select v-model="selected" multiple>
+      <option selected>A</option>
+      <option>B</option>
+      <option>C</option>
+    </select>
+    <br>
+    <span>Selected: {{ selected | json }}</span>
+  </div>
+  <hr>
+  <div id="vue-7">
+    <select v-model="selected">
+      <option v-for="option in options" v-bind:value="option.value">
+        {{ option.text }}
+      </option>
+    </select>
+    <span>Selected: {{ selected }}</span>
+  </div>
+  <hr>
+  <a href="test-11.html">Next</a>
+
+  <script src="../../node_modules/vue/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: '#vue-1',
+      data: {
+        message: ''
+      }
+    })
+
+    new Vue({
+      el: '#vue-2',
+      data: {
+        checked: false
+      }
+    })
+
+    new Vue({
+      el: '#vue-3',
+      data: {
+        checkedNames: []
+      }
+    })
+
+    new Vue({
+      el: '#vue-4',
+      data: {
+        picked: ''
+      }
+    })
+
+    new Vue({
+      el: '#vue-5',
+      data: {
+        selected: null
+      }
+    })
+
+    new Vue({
+      el: '#vue-6',
+      data: {
+        selected: []
+      }
+    })
+
+    new Vue({
+      el: '#vue-7',
+      data: {
+        selected: 'A',
+        options: [
+          { text: 'One', value: 'A' },
+          { text: 'Two', value: 'B' },
+          { text: 'Three', value: 'C' }
+        ]
+      }
+    })
+  </script>
+</body>
+</html>
