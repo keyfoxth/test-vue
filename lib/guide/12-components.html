@@ -3,8 +3,17 @@
 <head>
   <meta charset="utf-8">
   <title></title>
+  <style>
+    .fade-transition {
+      transition: opacity .3s ease;
+    }
+    .fade-enter, .fade-leave {
+      opacity: 0;
+    }
+  </style>
 </head>
 <body>
+  <!-- Using Components -->
   <div id="vue-1">
     <vue-1-component></vue-1-component>
   </div>
@@ -25,6 +34,8 @@
     <vue-5-component-parent>{{ msg }}</vue-5-component-parent>
   </div>
   <hr>
+
+  <!-- Props -->
   <div id="vue-6">
     <child my-message="Hello!"></child>
   </div>
@@ -35,10 +46,47 @@
     <child v-bind:my-message="parentMsg"></child>
   </div>
   <hr>
+
+  <!-- Parent-Child Communication -->
+  <template id="vue-8">
+    <input v-model="msg">
+    <button v-on:click="notify">Dispatch Event</button>
+  </template>
+  <div id="vue-9">
+    <p>Message: {{ message | json }}</p>
+    <template v-on:child-msg="handleIt"></template>
+  </div>
+  <hr>
+
+  <!-- Content Distribution with Slots -->
+  <div id="vue-10">
+    <slot name="one"></slot>
+    <slot></slot>
+    <slot name="two"></slot>
+  </div>
+  <div id="vue-11">
+    <multi-insertion>
+      <p slot="one">One</p>
+      <p slot="two">Two</p>
+      <p>Default A</p>
+    </multi-insertion>
+  </div>
+  <hr>
+
+  <!-- Dynamic Components -->
+  <div id="vue-12">
+    <input v-model="view" type="radio" value="v-a" id="a" name="view">
+    <label for="a">A</label>
+    <input v-model="view" type="radio" value="v-b" id="b" name="view">
+    <label for="b">B</label>
+    <component :is="view" transition="fade" transition-mode="out-in"></component>
+  </div>
+  <hr>
   <a href="#">Next</a>
 
   <script src="../../node_modules/vue/dist/vue.js"></script>
   <script>
+    //  Using Components
     var vue1Component = Vue.extend({
       template: '<div>A custom component!</div>'
     })
@@ -93,6 +141,7 @@
     })
   </script>
   <script>
+    //  Props
     new Vue({
       el: '#vue-6',
       components: {
@@ -112,6 +161,60 @@
         child: {
           props: ['myMessage'],
           template: '<span>{{ myMessage }}</span>'
+        }
+      }
+    })
+  </script>
+  <script>
+    // Parent-Child Communication
+    Vue.component('template', {
+      template: '#vue-8',
+      data: function(){
+        return { msg: 'hello' }
+      },
+      methods: {
+        notify: function(){
+          if (this.msg.trim()) {
+            this.$dispatch('child-msg', this.msg)
+            this.msg = ''
+          }
+        }
+      }
+    })
+    new Vue({
+      el: '#vue-9',
+      data: {
+        message: []
+      },
+      methods: {
+        handleIt: function(msg){
+          this.message.push(msg)
+        }
+      }
+    })
+  </script>
+  <script>
+    // Content Distribution with Slots
+    Vue.component('multi-insertion', {
+      template: '#vue-10'
+    })
+    new Vue({
+      el: '#vue-11'
+    })
+  </script>
+  <script>
+    // Dynamic Components
+    new Vue({
+      el: '#vue-12',
+      data: {
+        view: 'v-a'
+      },
+      components: {
+        'v-a': {
+          template: '<div>Component A</div>'
+        },
+        'v-b': {
+          template: '<div>Component B</div>'
         }
       }
     })
