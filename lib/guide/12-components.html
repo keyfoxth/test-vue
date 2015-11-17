@@ -25,6 +25,16 @@
     <vue-5-component-parent>{{ msg }}</vue-5-component-parent>
   </div>
   <hr>
+  <div id="vue-6">
+    <child my-message="Hello!"></child>
+  </div>
+  <hr>
+  <div id="vue-7">
+    <input v-model="parentMsg">
+    <br>
+    <child v-bind:my-message="parentMsg"></child>
+  </div>
+  <hr>
   <a href="#">Next</a>
 
   <script src="../../node_modules/vue/dist/vue.js"></script>
@@ -80,6 +90,30 @@
     Vue.component('vue-5-component-parent', vue5Component)
     new Vue({
       el: '#vue-5'
+    })
+  </script>
+  <script>
+    new Vue({
+      el: '#vue-6',
+      components: {
+        child: {
+          props: ['myMessage'],
+          template: '<span>{{ myMessage }}</span>'
+        }
+      }
+    })
+
+    new Vue({
+      el: '#vue-7',
+      data: {
+        parentMsg: 'Message from parent'
+      },
+      components: {
+        child: {
+          props: ['myMessage'],
+          template: '<span>{{ myMessage }}</span>'
+        }
+      }
     })
   </script>
 </body>
