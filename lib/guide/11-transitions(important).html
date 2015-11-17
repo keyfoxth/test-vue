@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600|Roboto Mono" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 15px;
+      color: #34495e;
+    }
+
+    #vue-1, #vue-2, #vue-3 {
+      font-size: 1.2em;
+      line-height: 1.5em;
+    }
+
+    /* vue-1 */
+    .expand-transition {
+      transition: all .3s ease;
+      height: 30px;
+      padding: 10px;
+      background-color: #eee;
+      overflow: hidden;
+    }
+    .expand-enter, .expand-leave {
+      height: 0;
+      padding: 0 10px;
+      opacity: 0;
+    }
+
+    /* vue-2 */
+    .bounce-enter {
+      animation: bounce-in .5s;
+    }
+    .bounce-leave {
+      animation: bounce-out .5s;
+    }
+    @keyframes bounce-in {
+      0% { transform: scale(0); }
+      50% { transform: scale(1.5); }
+      100% { transform: scale(1); }
+    }
+    @keyframes bounce-out {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.5); }
+      100% { transform: scale(0); }
+    }
+
+    /* vue-3 */
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .staggered-transition {
+      transition: all .5s ease;
+      height: 27px;
+      overflow: hidden;
+    }
+    .staggered-enter, .staggered-leave {
+      height: 0;
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="vue-1">
+    <div v-if="show" transition="expand">hello</div>
+    <button @click="show = !show">Toggle</button>
+  </div>
+  <hr>
+  <div id="vue-2">
+    <span v-show="show" transition="bounce">Look at me!</span>
+    <br>
+    <button @click="show = !show">Toggle</button>
+  </div>
+  <hr>
+  <div id="vue-3">
+    <input v-model="query">
+    <ul>
+      <li v-for="item in items | filterBy query" transition="staggered" stagger="100">
+        {{ item.msg }}
+      </li>
+    </ul>
+  </div>
+  <hr>
+  <a href="test-12.html">Next</a>
+
+  <script src="../../node_modules/vue/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: '#vue-1',
+      data: {
+        show: true
+      },
+      transitions: {
+        expand: {
+          beforeEnter: function (el) {
+            el.textContent = 'beforeEnter'
+          },
+          enter: function (el) {
+            el.textContent = 'enter'
+          },
+          afterEnter: function (el) {
+            el.textContent = 'afterEnter'
+          },
+          beforeLeave: function (el) {
+            el.textContent = 'beforeLeave'
+          },
+          leave: function (el) {
+            el.textContent = 'leave'
+          },
+          afterLeave: function (el) {
+            el.textContent = 'afterLeave'
+          }
+        }
+      }
+    })
+
+    new Vue({
+      el: '#vue-2',
+      data: {
+        show: true
+      }
+    })
+
+    new Vue({
+      el: '#vue-3',
+      data: {
+        query: '',
+        items: [
+          { msg: 'Bruce Lee' },
+          { msg: 'Jackie Chan' },
+          { msg: 'Chuck Norris' },
+          { msg: 'Jet Li' },
+          { msg: 'Kung Fury' }
+        ]
+      }
+    })
+  </script>
+</body>
+</html>
