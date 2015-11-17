@@ -5,13 +5,81 @@
   <title></title>
 </head>
 <body>
-
+  <div id="vue-1">
+    <vue-1-component></vue-1-component>
+  </div>
+  <hr>
+  <div id="vue-2">
+    <vue-2-component-parent></vue-2-component-parent>
+  </div>
+  <hr>
+  <div id="vue-3">
+    <vue-3-component></vue-3-component>
+  </div>
+  <hr>
+  <div id="vue-4">
+    <vue-4-component-parent></vue-4-component-parent>
+  </div>
+  <hr>
+  <div id="vue-5">
+    <vue-5-component-parent>{{ msg }}</vue-5-component-parent>
+  </div>
+  <hr>
   <a href="#">Next</a>
 
   <script src="../../node_modules/vue/dist/vue.js"></script>
   <script>
+    var vue1Component = Vue.extend({
+      template: '<div>A custom component!</div>'
+    })
+    Vue.component('vue-1-component', vue1Component)
     new Vue({
+      el: '#vue-1'
+    })
 
+    var vue2Child = Vue.extend({
+      template: '<div>A custom component!</div>'
+    })
+    var vue2Parent = Vue.extend({
+      template: '<vue-2-component-child></vue-2-component-child>',
+      components: {
+        'vue-2-component-child': vue2Child
+      }
+    })
+    Vue.component('vue-2-component-parent', vue2Parent)
+    new Vue({
+      el: '#vue-2'
+    })
+
+    Vue.component('vue-3-component', {
+      template: '<div>A custom component!</div>'
+    })
+    new Vue({
+      el: '#vue-3'
+    })
+
+    var vue4Parent = Vue.extend({
+      template: '<vue-4-component-child></vue-4-component-child>',
+      components: {
+        'vue-4-component-child': {
+          template: '<div>A custom component!</div>'
+        }
+      }
+    })
+    Vue.component('vue-4-component-parent', vue4Parent)
+    new Vue({
+      el: '#vue-4'
+    })
+
+    var vue5Component = Vue.extend({
+      data: function(){
+        return { msg: 'Foobar' }
+      },
+      template: '{{ msg }}'
+    })
+    Vue.component('vue-5-component-parent', vue5Component)
+    new Vue({
+      el: '#vue-5'
     })
   </script>
 </body>
