@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+  <div id="vue-1">{{ message }}</div>
+  <hr>
+  <div id="vue-2">
+    <v-template></v-template>
+  </div>
+  <hr>
+  <div id="vue-3">{{ message }}</div>
+  <hr>
+  <a href="#">Next</a>
+
+  <script src="../../node_modules/vue/dist/vue.js"></script>
+  <script>
+    var vm = new Vue({
+      el: '#vue-1',
+      data: {
+        message: 'Hello!'
+      }
+    })
+    vm.message = 'New message'
+    console.log(vm.$el.textContent === 'New message')
+    Vue.nextTick(function(){
+      console.log(vm.$el.textContent === 'New message')
+    })
+
+    Vue.component('v-template', {
+      template: '<span v-on:click="updateMessage">{{ message }}</span>',
+      data: function(){
+        return {
+          message: 'not updated'
+        }
+      },
+      methods: {
+        updateMessage: function(){
+          this.message = 'updated'
+          console.log(this.$el.textContent)
+          this.$nextTick(function(){
+            console.log(this.$el.textContent)
+          })
+        }
+      }
+    })
+    new Vue({
+      el: '#vue-2'
+    })
+
+    var key = new Vue({
+      el: '#vue-3',
+      data: {
+        message: 'F12(key.noChange or key.change)'
+      },
+      computed: {
+        noChange: function(){
+          return Date.now()
+        },
+        change: {
+          cache: false,
+          get: function(){
+            return Date.now()
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>
