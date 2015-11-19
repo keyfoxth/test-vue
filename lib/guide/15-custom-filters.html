@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+  <div id="vue-1">
+    <span v-text="message | reverse"></span>
+  </div>
+  <hr>
+  <div id="vue-2">
+    <span v-text="message | wrap 'before' 'after'"></span>
+  </div>
+  <hr>
+  <div id="vue-3">
+    <input type="text" v-model="money | currencyDisplay">
+    <p>Model value: {{money}}</p>
+  </div>
+  <hr>
+  <div id="vue-4">
+    <input type="text" v-model="userInput">
+    <span>{{msg | concat userInput}}</span>
+  </div>
+  <hr>
+  <a href="#">Next</a>
+
+  <script src="../../node_modules/vue/dist/vue.js"></script>
+  <script>
+    Vue.filter('reverse', function(value){
+      return value.split('').reverse().join('')
+    })
+    new Vue({
+      el: '#vue-1',
+      data: {
+        message: 'message'
+      }
+    })
+
+    Vue.filter('wrap', function(value, begin, end){
+      return begin + ' ' + value  + ' ' + end
+    })
+    new Vue({
+      el: '#vue-2',
+      data: {
+        message: 'message'
+      }
+    })
+
+    new Vue({
+      el: '#vue-3',
+      data: {
+        money: 124.50
+      },
+      filters: {
+        currencyDisplay: {
+          read: function(val) {
+            return '$'+val.toFixed(2)
+          },
+          write: function(val, oldVal) {
+            var number = +val.replace(/[^\d.]/g, '')
+            return isNaN(number) ? 0 : parseFloat(number.toFixed(2))
+          }
+        }
+      }
+    })
+
+    new Vue({
+      el: '#vue-4',
+      data: {
+        msg: 'message: ',
+        userInput: 'test'
+      },
+      filters: {
+        concat: function(value, input){
+          return value + input
+        }
+      }
+    })
+  </script>
+</body>
+</html>
