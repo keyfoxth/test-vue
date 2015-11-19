@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+  <component>F12</component>
+  <hr>
+  <div id="vue">{{ message }}</div>
+  <hr>
+  <a href="#">Next</a>
+
+  <script src="../../node_modules/vue/dist/vue.js"></script>
+  <script>
+    var myMixin = {
+      created: function(){
+        this.hello()
+      },
+      methods: {
+        hello: function(){
+          console.log('Hello from mixin!')
+        }
+      }
+    }
+    var Component = Vue.extend({
+      mixins: [myMixin]
+    })
+    var component = new Component()
+
+    Vue.mixin({
+      created: function(){
+        var myOption = this.$options.myOption
+        if (myOption) {
+          console.log(myOption)
+        }
+      }
+    })
+    new Vue({
+      el: '#vue',
+      data: {
+        message: 'F12'
+      },
+      myOption: 'Hello!'
+    })
+  </script>
+</body>
+</html>
