@@ -3,7 +3,38 @@
 <head>
   <meta charset="utf-8">
   <title>Firebase validation</title>
-  <style></style>
+  <style>
+    body {
+      font-family: Helvetica, Arial, sans-serif;
+    }
+    ul {
+      padding: 0;
+    }
+    input {
+      margin-bottom: 10px;
+    }
+    .user {
+      height: 30px;
+      line-height: 30px;
+      padding: 10px;
+      border-top: 1px solid #eee;
+      overflow: hidden;
+      transition: all .25s ease;
+    }
+    .user:last-child {
+      border-bottom: 1px solid #eee;
+    }
+    .v-enter, .v-leave {
+      height: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+      border-top-width: 0;
+      border-bottom-width: 0;
+    }
+    .errors {
+      color: #f00;
+    }
+  </style>
 </head>
 <body>
   <div id="app">
@@ -14,8 +45,8 @@
       </li>
     </ul>
     <form id="form" v-on:submit.prevent="addUser">
-      <input v-model="newUser.name">
-      <input v-model="newUser.email">
+      Name: <input v-model="newUser.name"><br>
+      Email: <input v-model="newUser.email"><br>
       <input type="submit" value="Add User">
     </form>
     <ul class="errors">
