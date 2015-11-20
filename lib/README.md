@@ -1,4 +1,4 @@
-当数据未加载完时出现闪烁的解决方法：`[v-cloak](vuejs.org/api/#v-cloak)`
+当数据未加载完时出现闪烁的解决方法：[`v-cloak`](vuejs.org/api/#v-cloak)
 
 ```CSS
 [v-cloak] {
